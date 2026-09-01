@@ -187,7 +187,7 @@ if not api_key:
 
 
 # Initialize Main LLM
-llm = ChatGroq(groq_api_key=api_key, model_name="llama-3.3-70b-versatile")
+llm = ChatGroq(groq_api_key=api_key, model_name="openai/gpt-oss-120b", max_completion_tokens=4096)
 
 # Session State Setup
 if 'store' not in st.session_state:
