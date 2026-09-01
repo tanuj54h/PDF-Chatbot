@@ -94,8 +94,8 @@ cloud_logger = CloudLogger()
 
 def analyze_handwritten_pdf(uploaded_file, api_key):
     vision_llm = ChatGroq(
-        groq_api_key=api_key, 
-        model_name="meta-llama/llama-4-scout-17b-16e-instruct"
+    groq_api_key=api_key, 
+    model_name="qwen/qwen3.6-27b"
     )
     
     # Read file stream
