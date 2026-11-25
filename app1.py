@@ -95,7 +95,7 @@ cloud_logger = CloudLogger()
 def analyze_handwritten_pdf(uploaded_file, api_key):
     vision_llm = ChatGroq(
     groq_api_key=api_key, 
-    model_name="qwen/qwen3.6-27b"
+    model_name="qwen/qwen3.8-27b"
     )
     
     # Read file stream
@@ -305,12 +305,12 @@ if uploaded_files:
                     if "vectorstore" not in st.session_state:
                         # Create new store if one doesn't exist (e.g. only scanned PDF uploaded)
                         st.session_state.vectorstore = Chroma.from_documents(
-                            documents=[vision_doc], 
+                            documents=vision_splits, 
                             embedding=embeddings
                         )
                     else:
                         # Add to existing store
-                        st.session_state.vectorstore.add_documents([vision_doc])
+                        st.session_state.vectorstore.add_documents(vision_splits)
                         
                     st.success("✅ Handwriting analysis saved to memory! You can now ask questions about it below.")
 
